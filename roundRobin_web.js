@@ -2,6 +2,7 @@ let lineasDeCodigo = ["a = 1 + 2", "console.log('1+2')", "console.log(a)", "Hola
 let listaProcesos = [];
 let numSimulacion = 0;
 
+//Está función selecciona el número de lineas y que lineas tomara del arreglo predefinido
 function elegirLineas(proceso) {
     numLineas = Math.floor(Math.random() * 4);
     for (let i = 0; i <= numLineas; i++) {
@@ -9,6 +10,7 @@ function elegirLineas(proceso) {
     }
 }
 
+//Está función crea los procesos en base al número dado por el usuario y llama a la funcion elegir lineas para crear su arreglo de cadenas
 function inicializarSimulacion(N, listaProcesos) {
     for (let i = 0; i < N; i++) {
         listaProcesos.push(proceso = { id: (i + 1), arregloCadena: [] });
@@ -16,6 +18,8 @@ function inicializarSimulacion(N, listaProcesos) {
     }
 }
 
+//Está función lleva a cabo la simulación de round robin mostrando las lineas de codigo de cada procesos en orden consecutivo hasta que acabe con todos
+//Se llama a la funcion verificasListasVacias para verificar si los procesos tiene cadenas que mostrar o no para terminar la simulación
 function empezarSimulacion(listaProcesos) {
     b = false;
     document.getElementById(`tabla`).innerHTML += "<tr>" + 
@@ -43,6 +47,7 @@ function empezarSimulacion(listaProcesos) {
     }
 }
 
+//Está función verifica si todos los procesos tienen sus arreglos de cadenas vacios
 function verificarListasVacias(listaProcesos) {
     b = true;
     for (let i = 0; i < listaProcesos.length; i++) {
@@ -57,6 +62,7 @@ function verificarListasVacias(listaProcesos) {
     return b;
 }
 
+//Esta función sirve para llevar todo el proceso desde el html, mediante un boton y recibe el valor de un campo de que se encuentra en el mismo html
 function realizarBoton() {
     numSimulacion++;
     N = document.getElementsByName("numProcesos")[0].value;
